@@ -1,0 +1,36 @@
+spring:
+    data:
+      mongodb:
+        # 同步的源数据库
+        sourceTemplate:
+          host: 43.33.79.120
+          port: 27017
+          database: lbs
+          username: skywin
+          password: Pwdis123
+        # 同步的目标数据库
+        targetTemplate:
+          host: 43.33.79.250
+          port: 27017
+          database: lbs
+          username: skywin
+          password: Pwdis123
+
+data:
+  zm:
+    sync:
+      # 批量同步的记录数
+      batchSize: 2000
+      # 线程数
+      threadCount: 10
+      # 从第几页开始
+      beginPageNum: 1
+
+  mac:
+      sync:
+        # 批量同步的记录数
+        batchSize: 2000
+        # 线程数
+        threadCount: 10
+        # 从第几页开始
+        beginPageNum: 1

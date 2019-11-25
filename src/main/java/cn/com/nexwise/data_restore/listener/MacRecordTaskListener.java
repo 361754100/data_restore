@@ -1,0 +1,50 @@
+package cn.com.nexwise.data_restore.listener;
+
+import cn.com.nexwise.data_restore.common.SpringContext;
+import cn.com.nexwise.data_restore.service.DataSyncService;
+
+/**
+ * macrecord同步任务监听器
+ */
+public class MacRecordTaskListener implements TaskListener {
+
+    private int pageNum;
+    private int pageSize;
+    private int pageCount;
+
+    public MacRecordTaskListener(int pageNum, int pageSize, int pageCount) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
+        this.pageCount = pageCount;
+    }
+
+    @Override
+    public void callBack() {
+        DataSyncService dataSyncService = SpringContext.getBean(DataSyncService.class);
+        dataSyncService.handleMacSync(pageNum, pageSize, pageCount);
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+}
